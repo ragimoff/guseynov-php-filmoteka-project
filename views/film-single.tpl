@@ -4,7 +4,7 @@
         <div class="row">
             <!-- col -->
             <div class="col">
-                <img src="<?=HOST?>data/films/min/<?=$film['photo']?>" alt="<?=$film['title']?>">
+                <img src="<?=HOST?>/data/films/min/<?=$film['photo']?>" alt="<?=$film['title']?>">
             </div>
             <!-- //col -->
             <!-- col -->
