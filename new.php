@@ -5,6 +5,7 @@
 	$link = db_connect();
 
 	require('models/films.php');
+	require('functions/login-functions.php');
 
 
 	if (array_key_exists('newFilm', $_POST)) {
@@ -23,16 +24,13 @@
 
 	    // Если ошибок нет - сохраняем фильм
 	    if ( empty($errors) ) {
-	    	$result = films_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $_POST['photo']);
+	    	$result = films_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $_POST['file']);
 	    	if ( $result) {
 	    		$resultSuccess = "<p>Фильм был успешно добавлен!</p>";
-	    		echo "<pre>";
-	    		echo $_POST['photo'];
-	    		echo "</pre>";
 	    	}  else { 
 				$resultError = "<p>Что то пошло не так. Добавьте фильм еще раз!</p>";
 			}
-	    }		    
+	    }	    
 	}
 
 

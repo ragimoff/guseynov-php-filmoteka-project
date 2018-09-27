@@ -5,6 +5,7 @@
 	$link = db_connect();
 
 	require('models/films.php');
+	require('functions/login-functions.php');
 	
 	if (array_key_exists('update-film', $_POST)) {
 	    // Обработка ошибок
@@ -23,7 +24,7 @@
 	    // Если ошибок нет - сохраняем фильм
 	    	if (empty($errors)) {
 		    	// Запись данных в БД
-		    	$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_GET['id'], $_POST['description'], $_POST['photo']);
+		    	$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_GET['id'], $_POST['description'], $_POST['file']);
 		        
 			    if ( $result ) {
 					$resultInfo = "<p>Фильм был успешно обновлен!</p>";

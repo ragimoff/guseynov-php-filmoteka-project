@@ -25,17 +25,46 @@
 					<li class="header-nav__item">
 						<a class="header-nav__link" href="index.php">Все фильмы</a>
 					</li>
+					<?php 
+						if ( isset( $_SESSION['user'] ) ) {
+							if ( $_SESSION['user'] == 'admin') { 
+					?>
+						<li class="header-nav__item">
+							<a class="header-nav__link" href="new.php">Добавить новый фильм</a>
+						</li>
+					<?php 
+							}
+						}
+					?>
+					<?php 	if ( !isAdmin() ){ 	?>
 					<li class="header-nav__item">
-						<a class="header-nav__link" href="new.php">Добавить новый фильм</a>
+						<a class="header-nav__link" href="request.php">Указать информацию</a>
 					</li>
+					<li class="header-nav__item">
+						<a class="header-nav__link" href="login.php">Вход для админа</a>
+					</li>
+					<?php } ?>
+				
+					<?php 	if ( isAdmin() ){ 	?>
+						<li class="header-nav__item">
+							<a class="header-nav__link" href="logout.php">Выход</a>
+						</li>
+					<?php } ?>
+					
 				</ul>
+				
 			</nav>
+
+			<?php if (isset($_COOKIE['user-name'])) { ?>
+				<div class="title-3 mt-0 mb-1">
+					<?php  if( isset($_COOKIE['user-city']) ) { ?>
+						Привет, <?=$_COOKIE['user-name']?> из <?=$_COOKIE['user-city']?>!
+					<?php } else { ?>
+						Привет, <?=$_COOKIE['user-name']?>!
+					<?php } ?>
+				</div>
+			<?php } ?>
 		</div>
-		
-
-
-
-
 
 		<div class="container user-content section-page">
 			

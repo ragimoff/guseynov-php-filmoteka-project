@@ -20,8 +20,17 @@
                 </div>
 
                 <div class="mt-50">
+                    <?php 
+                        if ( isset( $_SESSION['user'] ) ) {
+                            if ( $_SESSION['user'] == 'admin') { 
+                    ?>
                     <a href="edit.php?id=<?=$film['id']?>" class="button button--edit">Редактировать</a>
                     <a href="index.php?action=delete&id=<?=$film['id']?>" class="button button--remove">Удалить</a>
+
+                    <?php 
+                            }
+                        }
+                    ?>
                 </div>  
             </div>
             <!-- //col -->

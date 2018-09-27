@@ -64,8 +64,6 @@
     		$img = createThumbnail($target_file, $wmax, $hmax);
     		$img->writeImage($resized_file);
 
-    		// Код для сжимания картинки
-
     	}
 
 
