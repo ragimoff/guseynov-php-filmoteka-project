@@ -17,56 +17,7 @@
 	//Функця добавляет фильмы
 	function films_new($link, $title, $genre, $year, $description, $db_file_name){
    		// Запись данных в БД
-
-   		if ( isset($_FILES['file']['name']) && $_FILES['file']['tmp_name'] != "" ) {
-    		$fileName = $_FILES['file']['name'];
-    		$fileTmploc = $_FILES['file']['tmp_name'];
-    		$fileType = $_FILES['file']['type'];
-    		$fileSize = $_FILES['file']['size'];
-    		$fileErrorMsg = $_FILES['file']['error'];
-    		$kaboom = explode(".", $fileName); // разбивает строку с именем файла FileNmae на два элемента до точки и после точки
-    		$fileExt = end($kaboom); // берем последний элемент массива то что идет после точки и записываем в переменную filext. Запишется jpeg без точки
-
-    		list($width, $height) = getimagesize($fileTmploc);
-
-    		if($width < 10 || $height < 10) {
-    			$errors[] = 'That image has no dimension';
-    		}
-    		// рондомное имя
-    		$db_file_name = rand(10000000, 99999999) . "." . $fileExt;
-    		// проверка размера
-    		if($fileSize > 10485760) {
-    			$errors[] = 'Your image file was larger than 10mb';
-    		} else if (!preg_match("/\.(gif|jpg|png|jpeg)$/i", $fileName) ) {
-    			$errors[] = 'Your image file was not jpg, jpeg, gif or png type';
-    		} else if ($fileErrorMsg == 1) {
-    			$errors[] = 'An unknown error occurred';
-    		}
-    		// путь куда он будет сохранен картинка
-    		$photoFolderLocation = ROOT . 'data/films/full/';
-    		$photoFolderLocationMin = ROOT . 'data/films/min/';
-    	//	$photoFolderLocationFull = ROOT . 'data/films/full';
-
-    		// полный путь изображения
-    		$uploadfile = $photoFolderLocation . $db_file_name;
-    		// переменящаем из пременного хранилища в нашу папку с изоб
-    		$moveResult = move_uploaded_file($fileTmploc, $uploadfile);
-
-    		if ( $moveResult != true) {
-    			$errors[] = 'File upload failed';
-    		}
-
-    		require_once(ROOT . "/functions/image_resize_imagick.php");
-    		$target_file = $photoFolderLocation . $db_file_name;
-    		$resized_file = $photoFolderLocationMin . $db_file_name;
-    		$wmax = 137;
-    		$hmax = 200;
-    		$img = createThumbnail($target_file, $wmax, $hmax);
-    		$img->writeImage($resized_file);
-
-    	}
-
-
+        
         $query = "INSERT INTO `filmoteka` (`title`, `genre`, `year`, `description`, `photo`) VALUES (
         '". mysqli_real_escape_string($link, $title) ."',
         '". mysqli_real_escape_string($link, $genre) ."',

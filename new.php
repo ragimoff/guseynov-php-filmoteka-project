@@ -24,7 +24,7 @@
 
 	    // Если ошибок нет - сохраняем фильм
 	    if ( empty($errors) ) {
-	    	$result = films_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $_POST['file']);
+	    	$result = films_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $_FILES['file']);
 	    	if ( $result) {
 	    		$resultSuccess = "<p>Фильм был успешно добавлен!</p>";
 	    	}  else { 
