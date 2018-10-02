@@ -27,5 +27,4 @@
 	include('views/footer.tpl');
 
 
-?>
-		
+?>		

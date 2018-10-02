@@ -27,7 +27,7 @@
 					<p>Изображение jpg или png, размером больше чем 100х100 пикселей, и весом до 2Мб. </p>
 					<input id="file" type="file" class="inputfile" name="file">
 					<label class="label-input-file" for="file">Выбрать файл</label>
-					<span><?=HOST?>/data/films/min/<?=$film['photo']?></span>
+					<span><?=HOST?>data/films/min/<?=$film['photo']?></span>
 				</div>
 				<!--<div class="section-ui">
 					<div class="formInput-image">

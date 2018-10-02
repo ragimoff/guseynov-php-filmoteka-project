@@ -26,4 +26,3 @@
 	include('views/footer.tpl');
 
 ?>
-		
